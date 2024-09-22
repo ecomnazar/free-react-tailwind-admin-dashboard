@@ -3,147 +3,240 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
-import Calendar from './pages/Calendar';
-import Chart from './pages/Chart';
-import ECommerce from './pages/Dashboard/ECommerce';
-import FormElements from './pages/Form/FormElements';
-import FormLayout from './pages/Form/FormLayout';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
-import Alerts from './pages/UiElements/Alerts';
-import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
+import { Login } from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import Banners from './pages/Banners';
+import BannersAdd from './pages/BannersAdd';
+import Users from './pages/Users';
+import BannerById from './pages/BannerById';
+import Countries from './pages/Countries';
+import CountriesAdd from './pages/CountriesAdd';
+import CountriesEdit from './pages/CountryEdit';
+import Cities from './pages/Cities';
+import CitiesEdit from './pages/CitiesEdit';
+import CitiesOfCountry from './pages/CitiesOfCountry';
+import CitiesAdd from './pages/CitiesAdd';
+import PhoneCodes from './pages/PhoneCodes';
+import PhoneCodesAdd from './pages/PhoneCodesAdd';
+import PhoneCodesEdit from './pages/PhoneCodesEdit';
+import PhoneOperators from './pages/PhoneOperators';
+import PhoneOperatorsAdd from './pages/PhoneOperatorsAdd';
+import PhoneOperatorsEdit from './pages/PhoneOperatorsEdit';
 
 function App() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading] = useState<boolean>(false);
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
   return loading ? (
     <Loader />
   ) : (
-    <DefaultLayout>
-      <Routes>
-        <Route
-          index
-          element={
-            <>
-              <PageTitle title="eCommerce Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <ECommerce />
-            </>
-          }
-        />
-        <Route
-          path="/calendar"
-          element={
-            <>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Calendar />
-            </>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
-            </>
-          }
-        />
-        <Route
-          path="/forms/form-elements"
-          element={
-            <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormElements />
-            </>
-          }
-        />
-        <Route
-          path="/forms/form-layout"
-          element={
-            <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormLayout />
-            </>
-          }
-        />
-        <Route
-          path="/tables"
-          element={
-            <>
-              <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Tables />
-            </>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Settings />
-            </>
-          }
-        />
-        <Route
-          path="/chart"
-          element={
-            <>
-              <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Chart />
-            </>
-          }
-        />
-        <Route
-          path="/ui/alerts"
-          element={
-            <>
-              <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Alerts />
-            </>
-          }
-        />
-        <Route
-          path="/ui/buttons"
-          element={
-            <>
-              <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Buttons />
-            </>
-          }
-        />
-        <Route
-          path="/auth/signin"
-          element={
-            <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignIn />
-            </>
-          }
-        />
-        <Route
-          path="/auth/signup"
-          element={
-            <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignUp />
-            </>
-          }
-        />
-      </Routes>
-    </DefaultLayout>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/"
+        element={
+          <>
+            <PageTitle title="Dashboard | Raqam" />
+            <DefaultLayout>
+              <Dashboard />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/banners"
+        element={
+          <>
+            <PageTitle title="Banners | Raqam" />
+            <DefaultLayout>
+              <Banners />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/banners/add"
+        element={
+          <>
+            <PageTitle title="Banners add | Raqam" />
+            <DefaultLayout>
+              <BannersAdd />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/banners/:id"
+        element={
+          <>
+            <PageTitle title="Banner | Raqam" />
+            <DefaultLayout>
+              <BannerById />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/countries"
+        element={
+          <>
+            <PageTitle title="Countries | Raqam" />
+            <DefaultLayout>
+              <Countries />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/countries/add"
+        element={
+          <>
+            <PageTitle title="Add country | Raqam" />
+            <DefaultLayout>
+              <CountriesAdd />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/countries/:id"
+        element={
+          <>
+            <PageTitle title="Edit country | Raqam" />
+            <DefaultLayout>
+              <CountriesEdit />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/cities"
+        element={
+          <>
+            <PageTitle title="Cities | Raqam" />
+            <DefaultLayout>
+              <Cities />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        // country id
+        path="/cities/add/:id"
+        element={
+          <>
+            <PageTitle title="Add city | Raqam" />
+            <DefaultLayout>
+              <CitiesAdd />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/cities/:id"
+        element={
+          <>
+            <PageTitle title="City | Raqam" />
+            <DefaultLayout>
+              <CitiesEdit />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/cities/country/:id"
+        element={
+          <>
+            <PageTitle title="Cities | Raqam" />
+            <DefaultLayout>
+              <CitiesOfCountry />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/phoneCodes"
+        element={
+          <>
+            <PageTitle title="Phone codes | Raqam" />
+            <DefaultLayout>
+              <PhoneCodes />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/phoneCodes/add/:id"
+        element={
+          <>
+            <PageTitle title="Add phone code | Raqam" />
+            <DefaultLayout>
+              <PhoneCodesAdd />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/phoneCodes/:id"
+        element={
+          <>
+            <PageTitle title="Edit phone code | Raqam" />
+            <DefaultLayout>
+              <PhoneCodesEdit />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/phoneOperators"
+        element={
+          <>
+            <PageTitle title="Phone operators | Raqam" />
+            <DefaultLayout>
+              <PhoneOperators />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/phoneOperators/:id"
+        element={
+          <>
+            <PageTitle title="Edit phone operator | Raqam" />
+            <DefaultLayout>
+              <PhoneOperatorsEdit />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/phoneOperators/add/:id"
+        element={
+          <>
+            <PageTitle title="Add phone operator | Raqam" />
+            <DefaultLayout>
+              <PhoneOperatorsAdd />
+            </DefaultLayout>
+          </>
+        }
+      />
+      <Route
+        path="/users"
+        element={
+          <>
+            <PageTitle title="Users | Raqam" />
+            <DefaultLayout>
+              <Users />
+            </DefaultLayout>
+          </>
+        }
+      />
+    </Routes>
   );
 }
 
